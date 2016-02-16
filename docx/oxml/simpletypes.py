@@ -407,3 +407,100 @@ class ST_VerticalAlignRun(XsdStringEnumeration):
     SUBSCRIPT = 'subscript'
 
     _members = (BASELINE, SUPERSCRIPT, SUBSCRIPT)
+
+
+class ST_Shd(XsdStringEnumeration):
+    """
+    Valid values for `w:shd/@val`.
+    """
+    NIL = "nil"
+    CLEAR = "clear"
+    SOLID = "solid"
+    HORZSTRIPE = "horzStripe"
+    VERTSTRIPE = "vertStripe"
+    REVERSEDIAGSTRIPE = "reverseDiagStripe"
+    DIAGSTRIPE = "diagStripe"
+    HORZCROSS = "horzCross"
+    DIAGCROSS = "diagCross"
+    THINHORZSTRIPE = "thinHorzStripe"
+    THINVERTSTRIPE = "thinVertStripe"
+    THINREVERSEDIAGSTRIPE = "thinReverseDiagStripe"
+    THINDIAGSTRIPE = "thinDiagStripe"
+    THINHORZCROSS = "thinHorzCross"
+    THINDIAGCROSS = "thinDiagCross"
+    PCT5 = "pct5"
+    PCT10 = "pct10"
+    PCT12 = "pct12"
+    PCT15 = "pct15"
+    PCT20 = "pct20"
+    PCT25 = "pct25"
+    PCT30 = "pct30"
+    PCT35 = "pct35"
+    PCT37 = "pct37"
+    PCT40 = "pct40"
+    PCT45 = "pct45"
+    PCT50 = "pct50"
+    PCT55 = "pct55"
+    PCT60 = "pct60"
+    PCT62 = "pct62"
+    PCT65 = "pct65"
+    PCT70 = "pct70"
+    PCT75 = "pct75"
+    PCT80 = "pct80"
+    PCT85 = "pct85"
+    PCT87 = "pct87"
+    PCT90 = "pct90"
+    PCT95 = "pct95"
+
+    _members = (
+    NIL, CLEAR, SOLID, HORZSTRIPE, VERTSTRIPE, REVERSEDIAGSTRIPE, DIAGSTRIPE, HORZCROSS, DIAGCROSS, THINHORZSTRIPE,
+    THINVERTSTRIPE, THINREVERSEDIAGSTRIPE, THINDIAGSTRIPE, THINHORZCROSS, THINDIAGCROSS, PCT5, PCT10, PCT12, PCT15,
+    PCT20, PCT25, PCT30, PCT35, PCT37, PCT40, PCT45, PCT50, PCT55, PCT60, PCT62, PCT65, PCT70, PCT75, PCT80, PCT85,
+    PCT87, PCT90, PCT95)
+
+class ST_ThemeColor(XsdStringEnumeration):
+    """
+    Valid values for `w:shd/@themeColor`.
+    """
+    DARK1 = 'dark1'
+    LIGHT1 = 'light1'
+    DARK2 = 'dark2'
+    LIGHT2 = 'light2'
+    ACCENT1 = 'accent1'
+    ACCENT2 = 'accent2'
+    ACCENT3 = 'accent3'
+    ACCENT4 = 'accent4'
+    ACCENT5 = 'accent5'
+    ACCENT6 = 'accent6'
+    HYPERLINK = 'hyperlink'
+    FOLLOWEDHYPERLINK = 'followedHyperlink'
+    NONE = 'none'
+    BACKGROUND1 = 'background1'
+    TEXT1 = 'text1'
+    BACKGROUND2 = 'background2'
+    TEXT2 = 'text2'
+
+    _members = (DARK1, LIGHT1, DARK2, LIGHT2, ACCENT1, ACCENT2, ACCENT3, ACCENT4, ACCENT5, ACCENT6, HYPERLINK, FOLLOWEDHYPERLINK, NONE, BACKGROUND1, TEXT1, BACKGROUND2, TEXT2)
+
+
+class ST_UcharHexNumber(XsdString):
+    @classmethod
+    def validate(cls, value):
+        try:
+            int(value, 16)
+        except ValueError as e:
+            ValueError("must be a hexidecimal number but got '%s'" % value)
+
+class ST_TextAlignment(XsdStringEnumeration):
+    """
+    Valid values for `w:shd/@themeColor` according to ECMA-376
+    """
+
+    TOP = 'top'
+    CENTER = 'center'
+    BASELINE = 'baseline'
+    BOTTOM = 'bottom'
+    AUTO = 'auto'
+
+    _members = (TOP, CENTER, BASELINE, BOTTOM, AUTO)
+

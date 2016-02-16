@@ -291,3 +291,20 @@ class ParagraphFormat(ElementProxy):
             if line == Twips(480):
                 return WD_LINE_SPACING.DOUBLE
         return lineRule
+
+    @property
+    def vertical_alignment(self):
+        """
+        A member of the :ref:`WdParagraphAlignment` enumeration specifying
+        the justification setting for this paragraph. A value of |None|
+        indicates paragraph alignment is inherited from the style hierarchy.
+        """
+        pPr = self._element.pPr
+        if pPr is None:
+            return None
+        return pPr.textAlignment_val
+
+    @vertical_alignment.setter
+    def vertical_alignment(self, value):
+        pPr = self._element.get_or_add_pPr()
+        pPr.textAlignment_val = value

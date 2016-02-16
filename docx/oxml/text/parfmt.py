@@ -6,7 +6,7 @@ Custom element classes related to paragraph properties (CT_PPr).
 
 from ...enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from ...shared import Length
-from ..simpletypes import ST_SignedTwipsMeasure, ST_TwipsMeasure
+from ..simpletypes import ST_SignedTwipsMeasure, ST_TwipsMeasure, ST_TextAlignment
 from ..xmlchemy import (
     BaseOxmlElement, OptionalAttribute, RequiredAttribute, ZeroOrOne
 )
@@ -27,6 +27,12 @@ class CT_Jc(BaseOxmlElement):
     ``<w:jc>`` element, specifying paragraph justification.
     """
     val = RequiredAttribute('w:val', WD_ALIGN_PARAGRAPH)
+
+class CT_TextAlignment(BaseOxmlElement):
+    """
+    ``<w:textAlignment>`` element, specifying paragraph vertical text alignment.
+    """
+    val = RequiredAttribute('w:val', ST_TextAlignment)
 
 
 class CT_PPr(BaseOxmlElement):
@@ -53,6 +59,7 @@ class CT_PPr(BaseOxmlElement):
     spacing = ZeroOrOne('w:spacing', successors=_tag_seq[22:])
     ind = ZeroOrOne('w:ind', successors=_tag_seq[23:])
     jc = ZeroOrOne('w:jc', successors=_tag_seq[27:])
+    textAlignment = ZeroOrOne('w:textAlignment', successors=_tag_seq[29:])
     sectPr = ZeroOrOne('w:sectPr', successors=_tag_seq[35:])
     del _tag_seq
 
@@ -300,6 +307,23 @@ class CT_PPr(BaseOxmlElement):
             self._remove_widowControl()
         else:
             self.get_or_add_widowControl().val = value
+
+    @property
+    def textAlignment_val(self):
+        """
+        The value of the ``<w:textAlignment>`` child element or |None| if not present.
+        """
+        textAlignment = self.textAlignment
+        if textAlignment is None:
+            return None
+        return textAlignment.val
+
+    @textAlignment_val.setter
+    def textAlignment_val(self, value):
+        if value is None:
+            self._remove_textAlignment()
+            return
+        self.get_or_add_textAlignment().val = value
 
 
 class CT_Spacing(BaseOxmlElement):

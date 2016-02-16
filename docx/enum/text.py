@@ -206,3 +206,37 @@ class WD_UNDERLINE(XmlEnumeration):
             'DASH_LONG_HEAVY', 55, 'dashLongHeavy', 'Long heavy dashes.'
         ),
     )
+
+@alias('WD_ALIGN_VERTICAL')
+class WD_VERTICAL_ALIGNMENT(XmlEnumeration):
+    """
+    alias: **WD_ALIGN_VERTICAL**
+
+    Specifies paragraph vertical alignment type.
+
+    Example::
+
+        from docx.enum.text import WD_ALIGN_VERTICAL
+
+        paragraph = document.add_paragraph()
+        paragraph.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    """
+
+    __ms_name__ = 'WdVerticalAlignment'
+
+    __url__ = 'https://msdn.microsoft.com/en-us/library/microsoft.office.interop.word.wdverticalalignment.aspx'
+
+    __members__ = (
+        XmlMappedEnumMember(
+            'TOP', 0, 'left', 'Top vertical alignment'
+        ),
+        XmlMappedEnumMember(
+            'CENTER', 1, 'center', 'Center vertical alignment'
+        ),
+        XmlMappedEnumMember(
+            'JUSTIFY', 2, 'right', 'Justified vertical alignment'
+        ),
+        XmlMappedEnumMember(
+            'BOTTOM', 3, 'both', 'Bottom vertical alignment'
+        ),
+    )
