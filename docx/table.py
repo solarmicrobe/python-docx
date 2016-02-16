@@ -33,6 +33,10 @@ class Table(Parented):
             tc.width = width
         return _Column(gridCol, self)
 
+    def remove_column(self):
+        tblGrid = self._tbl.tblGrid
+        tblGrid.remove_gridCol(tblGrid.get_gridCol())
+
     def add_row(self):
         """
         Return a |_Row| instance, newly added bottom-most to the table.

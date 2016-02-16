@@ -328,6 +328,15 @@ class _BaseChildElement(object):
         property_ = property(self._list_getter, None, None)
         setattr(self._element_cls, prop_name, property_)
 
+    def _add_list_item_remover(self):
+        """
+        Add a read-only ``{prop_name}_lst`` property to the element class to
+        remove a child element from the list
+        """
+        prop_name = '_remove_item_from_%s' % self._prop_name
+        property_ = property(self._list_item_remover, None, None)
+        setattr(self._element_cls, prop_name, property_)
+
     @lazyproperty
     def _add_method_name(self):
         return '_add_%s' % self._prop_name
@@ -398,6 +407,14 @@ class _BaseChildElement(object):
             'rder they appear.' % self._nsptagname
         )
         return get_child_element_list
+
+    def _list_item_remover(self, obj):
+        def remove_child_element_from_list(list, obj):
+            list.remove(obj)
+        remove_child_element_from_list.__doc__ = (
+            'Removes from ``<%s>`` list child element ``<%s>``.'
+        )
+        return remove_child_element_from_list
 
     @lazyproperty
     def _public_add_method_name(self):
@@ -561,6 +578,7 @@ class ZeroOrMore(_BaseChildElement):
         self._add_inserter()
         self._add_adder()
         self._add_public_adder()
+        self._add_list_item_remover()
         delattr(element_cls, prop_name)
 
 
