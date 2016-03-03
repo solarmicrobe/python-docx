@@ -407,3 +407,11 @@ class ST_VerticalAlignRun(XsdStringEnumeration):
     SUBSCRIPT = 'subscript'
 
     _members = (BASELINE, SUPERSCRIPT, SUBSCRIPT)
+
+class ST_VerticalJc(XsdStringEnumeration):
+    TOP = 'top'
+    CENTER = 'center'
+    BOTH = 'both'
+    BOTTOM = 'bottom'
+
+    _members = (TOP, CENTER, BOTH, BOTTOM)

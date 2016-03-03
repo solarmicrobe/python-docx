@@ -13,8 +13,8 @@ from ..exceptions import InvalidSpanError
 from .ns import nsdecls, qn
 from ..shared import Emu, Twips
 from .simpletypes import (
-    ST_Merge, ST_TblLayoutType, ST_TblWidth, ST_TwipsMeasure, XsdInt
-)
+    ST_Merge, ST_TblLayoutType, ST_TblWidth, ST_TwipsMeasure, XsdInt,
+    ST_VerticalJc)
 from .xmlchemy import (
     BaseOxmlElement, OneAndOnlyOne, OneOrMore, OptionalAttribute,
     RequiredAttribute, ZeroOrOne, ZeroOrMore
@@ -723,6 +723,7 @@ class CT_TcPr(BaseOxmlElement):
     tcW = ZeroOrOne('w:tcW', successors=_tag_seq[2:])
     gridSpan = ZeroOrOne('w:gridSpan', successors=_tag_seq[3:])
     vMerge = ZeroOrOne('w:vMerge', successors=_tag_seq[5:])
+    vAlign = ZeroOrOne('w:vAlign', successors=_tag_seq[12:])
     del _tag_seq
 
     @property
@@ -775,9 +776,25 @@ class CT_TcPr(BaseOxmlElement):
         tcW = self.get_or_add_tcW()
         tcW.width = value
 
+    @property
+    def vAlign_val(self):
+        vAlign = self.vAlign
+        if vAlign is None:
+            return None
+        return vAlign.val
+
+    @vAlign_val.setter
+    def vAlign_val(self, value):
+        self._remove_vAlign()
+        if value is not None:
+            self.get_or_add_vAlign().val = value
+
 
 class CT_VMerge(BaseOxmlElement):
     """
     ``<w:vMerge>`` element, specifying vertical merging behavior of a cell.
     """
     val = OptionalAttribute('w:val', ST_Merge, default=ST_Merge.CONTINUE)
+
+class CT_VerticalJc(BaseOxmlElement):
+    val = RequiredAttribute('w:val', ST_VerticalJc)
