@@ -477,3 +477,11 @@ class ST_UcharHexNumber(XsdString):
             int(value, 16)
         except ValueError as e:
             ValueError("must be a hexidecimal number but got '%s'" % value)
+
+class ST_VerticalJc(XsdStringEnumeration):
+    TOP = 'top'
+    CENTER = 'center'
+    BOTH = 'both'
+    BOTTOM = 'bottom'
+
+    _members = (TOP, CENTER, BOTH, BOTTOM)

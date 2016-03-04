@@ -282,6 +282,23 @@ class _Cell(ShdMixin, BlockItemContainer):
     def width(self, value):
         self._tc.width = value
 
+    @property
+    def vAlign(self):
+        tcPr = self._tc.tcPr
+        if tcPr is None:
+            return None
+
+        vAlign = tcPr.vAlign_val
+
+    @vAlign.setter
+    def vAlign(self, value):
+        tcPr = self._tc.get_or_add_tcPr()
+        tcPr._remove_vAlign()
+
+        if value is not None:
+            tcPr.vAlign_val = value
+
+
 
 class _Column(Parented):
     """
@@ -426,3 +443,4 @@ class _Rows(Parented):
         Reference to the |Table| object this row collection belongs to.
         """
         return self._parent.table
+
