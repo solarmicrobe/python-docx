@@ -8,7 +8,7 @@ from __future__ import (
     absolute_import, division, print_function, unicode_literals
 )
 from .mixins.PrMixin import PrMixin
-from docx.shared import ElementProxy
+from bats_docx.shared import ElementProxy
 
 
 class Shd(PrMixin, ElementProxy):

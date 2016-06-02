@@ -10,7 +10,7 @@ from .blkcntnr import BlockItemContainer
 from .enum.style import WD_STYLE_TYPE
 from .oxml.simpletypes import ST_Merge
 from .shared import Inches, lazyproperty, Parented
-from docx.mixins.ShdMixin import ShdMixin
+from bats_docx.mixins.ShdMixin import ShdMixin
 
 
 class Table(ShdMixin, Parented):

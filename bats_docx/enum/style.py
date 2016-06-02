@@ -18,8 +18,8 @@ class WD_BUILTIN_STYLE(XmlEnumeration):
 
     Example::
 
-        from docx import Document
-        from docx.enum.style import WD_STYLE
+        from bats_docx import Document
+        from bats_docx.enum.style import WD_STYLE
 
         document = Document()
         styles = document.styles
@@ -439,8 +439,8 @@ class WD_STYLE_TYPE(XmlEnumeration):
 
     Example::
 
-        from docx import Document
-        from docx.enum.style import WD_STYLE_TYPE
+        from bats_docx import Document
+        from bats_docx.enum.style import WD_STYLE_TYPE
 
         styles = Document().styles
         assert styles[0].type == WD_STYLE_TYPE.PARAGRAPH

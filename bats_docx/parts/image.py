@@ -10,9 +10,9 @@ from __future__ import (
 
 import hashlib
 
-from docx.image.image import Image
-from docx.opc.part import Part
-from docx.shared import Emu, Inches
+from bats_docx.image.image import Image
+from bats_docx.opc.part import Part
+from bats_docx.shared import Emu, Inches
 
 
 class ImagePart(Part):

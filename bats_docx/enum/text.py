@@ -18,7 +18,7 @@ class WD_PARAGRAPH_ALIGNMENT(XmlEnumeration):
 
     Example::
 
-        from docx.enum.text import WD_ALIGN_PARAGRAPH
+        from bats_docx.enum.text import WD_ALIGN_PARAGRAPH
 
         paragraph = document.add_paragraph()
         paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -90,7 +90,7 @@ class WD_LINE_SPACING(XmlEnumeration):
 
     Example::
 
-        from docx.enum.text import WD_LINE_SPACING
+        from bats_docx.enum.text import WD_LINE_SPACING
 
         paragraph = document.add_paragraph()
         paragraph.line_spacing_rule = WD_LINE_SPACING.EXACTLY

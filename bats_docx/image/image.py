@@ -184,7 +184,7 @@ def _ImageHeaderFactory(stream):
     Return a |BaseImageHeader| subclass instance that knows how to parse the
     headers of the image in *stream*.
     """
-    from docx.image import SIGNATURES
+    from bats_docx.image import SIGNATURES
 
     def read_32(stream):
         stream.seek(0)

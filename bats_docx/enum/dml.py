@@ -17,7 +17,7 @@ class MSO_COLOR_TYPE(Enumeration):
 
     Example::
 
-        from docx.enum.dml import MSO_COLOR_TYPE
+        from bats_docx.enum.dml import MSO_COLOR_TYPE
 
         assert font.color.type == MSO_COLOR_TYPE.SCHEME
     """
@@ -53,7 +53,7 @@ class MSO_THEME_COLOR_INDEX(XmlEnumeration):
 
     Example::
 
-        from docx.enum.dml import MSO_THEME_COLOR
+        from bats_docx.enum.dml import MSO_THEME_COLOR
 
         font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
     """

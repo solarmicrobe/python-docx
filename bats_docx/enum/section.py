@@ -18,7 +18,7 @@ class WD_ORIENTATION(XmlEnumeration):
 
     Example::
 
-        from docx.enum.section import WD_ORIENT
+        from bats_docx.enum.section import WD_ORIENT
 
         section = document.sections[-1]
         section.orientation = WD_ORIENT.LANDSCAPE
@@ -47,7 +47,7 @@ class WD_SECTION_START(XmlEnumeration):
 
     Example::
 
-        from docx.enum.section import WD_SECTION
+        from bats_docx.enum.section import WD_SECTION
 
         section = document.sections[0]
         section.start_type = WD_SECTION.NEW_PAGE

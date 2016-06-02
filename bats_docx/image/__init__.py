@@ -9,11 +9,11 @@ from __future__ import (
     absolute_import, division, print_function, unicode_literals
 )
 
-from docx.image.bmp import Bmp
-from docx.image.gif import Gif
-from docx.image.jpeg import Exif, Jfif
-from docx.image.png import Png
-from docx.image.tiff import Tiff
+from bats_docx.image.bmp import Bmp
+from bats_docx.image.gif import Gif
+from bats_docx.image.jpeg import Exif, Jfif
+from bats_docx.image.png import Png
+from bats_docx.image.tiff import Tiff
 
 
 SIGNATURES = (

@@ -19,7 +19,7 @@ class WD_TABLE_ALIGNMENT(XmlEnumeration):
 
     Example::
 
-        from docx.enum.table import WD_TABLE_ALIGNMENT
+        from bats_docx.enum.table import WD_TABLE_ALIGNMENT
 
         table = document.add_table(3, 3)
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -49,7 +49,7 @@ class WD_TABLE_DIRECTION(Enumeration):
 
     Example::
 
-        from docx.enum.table import WD_TABLE_DIRECTION
+        from bats_docx.enum.table import WD_TABLE_DIRECTION
 
         table = document.add_table(3, 3)
         table.direction = WD_TABLE_DIRECTION.RTL
